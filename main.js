@@ -40,7 +40,7 @@ class Field {
     }
 
     askQuestion(){
-        const answer = prompt('Which way? ').to UpperCase();
+        const answer = prompt('Which way? ').toUpperCase();
         switch(answer) {
             case 'U':
                 this.locationY -= 1;
@@ -99,7 +99,7 @@ class Field {
             y: Math.floor(Math.random() * height)
         };
         //Making sure that "hat" is not at starting point
-        while (hatLocation.x === 0 &&& hatLocation.y === 0) {
+        while (hatLocation.x === 0 && hatLocation.y === 0) {
             hatLocation.x = Math.floor(Math.random()* width);
             hatLocation.y = Math.floor(Math.random()* heigth);
         }
