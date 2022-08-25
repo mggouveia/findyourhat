@@ -46,20 +46,20 @@ class Field {
     askQuestion(){
         const answer = prompt('Which way? ').toUpperCase();
         switch(answer) {
-            case 'W':
+            case 'U':
                 this.locationY -= 1;
                 break;
-            case 'S':
+            case 'D':
                 this.locationY += 1;
                 break;
-            case 'A':
+            case 'L':
                 this.locationX -= 1;
                 break;
-            case 'D':
+            case 'R':
                 this.locationX += 1;
                 break;
             default:
-                console.log('Enter W, S, A or D.');
+                console.log('Enter U (up), D (down), L (left) or R (right).');
                 this.askQuestion();
                 break;
         }
