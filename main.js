@@ -1,6 +1,10 @@
 //Get user input
 const prompt = require('prompt-sync')({sigint: true});
 
+// This lets us clear the screen after every turn
+// need to run `npm install clear-screen` in the
+// terminal first
+const clear = require('clear-screen');
 
 const hat = '^';
 const hole = 'O';
@@ -42,20 +46,20 @@ class Field {
     askQuestion(){
         const answer = prompt('Which way? ').toUpperCase();
         switch(answer) {
-            case 'U':
+            case 'W':
                 this.locationY -= 1;
                 break;
-            case 'D':
+            case 'S':
                 this.locationY += 1;
                 break;
-            case 'L':
+            case 'A':
                 this.locationX -= 1;
                 break;
-            case 'R':
+            case 'D':
                 this.locationX += 1;
                 break;
             default:
-                console.log('Enter U, D, L or R.');
+                console.log('Enter W, S, A or D.');
                 this.askQuestion();
                 break;
         }
@@ -79,6 +83,7 @@ class Field {
     }
 
     print(){
+        clear();
         const displayString = this.field.map(row => {
             return row.join('');
         }).join ('\n');
@@ -86,7 +91,7 @@ class Field {
     }
 
     static generateField(height, width, percentage = 0.1) {
-        const field = new Array(height).fill(0).map(el => newArray(width));
+        const field = new Array(height).fill(0).map(el => new Array(width));
         for (let y = 0; y < height; y++){
             for (let x = 0; x < width; x++) {
                 const prob = Math.random();
